@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message ListsSessions{
+    repeated Session sessions = 1;
+}
+message Session{
+    repeated string session_item = 1;
+}
+message SessionRequestInfo{
+    int32 last_hours = 1;
+}
+message PingSessResponse {
+    string data = 1;
+}
+message PingSessRequest {
+
+}
+service SessionDataService {
+    rpc GetSessionData (SessionRequestInfo) returns (ListsSessions);
+    rpc PingSess(PingSessRequest) returns (PingSessResponse);
+}
